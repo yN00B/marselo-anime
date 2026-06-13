@@ -1,0 +1,195 @@
+/* =============================================
+   MARSELO ANIME — ANIMATIONS
+   ============================================= */
+
+/* ── KEYFRAMES ── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -400% 0; }
+  100% { background-position: 400% 0; }
+}
+
+@keyframes orb-float1 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%     { transform: translate(-40px, 30px) scale(1.05); }
+  66%     { transform: translate(20px, -20px) scale(0.97); }
+}
+
+@keyframes orb-float2 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50%     { transform: translate(40px,-30px) scale(1.08); }
+}
+
+@keyframes orb-float3 {
+  0%,100% { transform: translate(0,0); }
+  40%     { transform: translate(-30px, 20px); }
+  80%     { transform: translate(20px,-10px); }
+}
+
+@keyframes loader-pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.3); }
+  50%     { box-shadow: 0 0 0 16px rgba(201,168,76,0); }
+}
+
+@keyframes loader-fill {
+  0%   { width: 0; }
+  100% { width: 100%; }
+}
+
+@keyframes float-up-down {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50%     { transform: translateX(-50%) translateY(-10px); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scale-in {
+  from { transform: scale(0.9); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(40px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes gold-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes party-pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.4); }
+  50%     { box-shadow: 0 0 0 10px rgba(201,168,76,0); }
+}
+
+@keyframes dots {
+  0%,20%  { content: '.'; }
+  40%     { content: '..'; }
+  60%,100%{ content: '...'; }
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── SECTION ANIMATIONS ── */
+.section-trending, .section-toprated, .section-seasonal,
+.feature-banner {
+  animation: fade-in 0.6s ease both;
+}
+
+/* ── CARD STAGGER ── */
+.anime-card {
+  animation: scale-in 0.4s ease both;
+}
+.cards-row .anime-card:nth-child(1) { animation-delay: 0.05s; }
+.cards-row .anime-card:nth-child(2) { animation-delay: 0.1s; }
+.cards-row .anime-card:nth-child(3) { animation-delay: 0.15s; }
+.cards-row .anime-card:nth-child(4) { animation-delay: 0.2s; }
+.cards-row .anime-card:nth-child(5) { animation-delay: 0.25s; }
+.cards-row .anime-card:nth-child(6) { animation-delay: 0.3s; }
+
+.cards-grid .anime-card { animation-delay: calc(var(--i, 0) * 0.04s); }
+
+/* ── DETAIL PAGE ── */
+.detail-hero { animation: fade-in 0.6s ease; }
+.detail-poster { animation: scale-in 0.5s 0.2s ease both; }
+.detail-info > * {
+  animation: fade-up 0.5s ease both;
+}
+.detail-genres    { animation-delay: 0.1s; }
+.detail-title     { animation-delay: 0.2s; }
+.detail-meta-row  { animation-delay: 0.3s; }
+.detail-synopsis  { animation-delay: 0.4s; }
+.detail-actions   { animation-delay: 0.5s; }
+
+/* ── MODAL ── */
+.modal.open {
+  animation: scale-in 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ── PARTY ROOM ── */
+.party-room-active {
+  animation: scale-in 0.4s ease;
+}
+.pra-member {
+  animation: slide-in-right 0.3s ease both;
+}
+
+/* ── LOADER TEXT SHIMMER ── */
+.loader-title {
+  background: linear-gradient(90deg,
+    var(--gold-dim) 0%, var(--gold-light) 40%,
+    var(--gold-dim) 80%, var(--gold-light) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  animation: gold-shimmer 3s linear infinite;
+}
+
+/* ── GOLD SHINE ON HOVER ── */
+.btn-primary span:first-child {
+  position: relative; z-index: 1;
+}
+
+/* ── PARTY PULSE ── */
+.pra-code {
+  animation: party-pulse 2s ease infinite;
+}
+
+/* ── RESPONSIVE MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── PAGE TRANSITIONS ── */
+.page {
+  opacity: 0; transition: opacity 0.4s ease;
+}
+.page.active {
+  opacity: 1;
+}
+
+/* ── WAVE DECORATION ── */
+.hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
+  background: linear-gradient(to bottom, transparent 0%, var(--obsidian) 100%);
+  pointer-events: none;
+}
+
+/* ── GOLDEN LINE DECORATIONS ── */
+.section-title::after {
+  content: '';
+  display: block; width: 60px; height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin-top: 12px;
+}
+
+/* ── BROWSE HERO BG ── */
+.browse-hero {
+  position: relative; overflow: hidden;
+}
+.browse-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 100% at 50% 0%, rgba(109,40,217,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
