@@ -5,7 +5,7 @@
 
 const Auth = (() => {
   // Backend URL — change this to your deployed Cloudflare Worker or Express URL
-  const BACKEND = window.MARSELO_API || 'http://localhost:3001';
+  const BACKEND = window.MARSELO_API || 'https://marselo-anime-api.marselo.workers.dev/';
 
   let currentUser = null;
   let token = null;
